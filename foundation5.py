@@ -326,7 +326,8 @@ def menu(menu_class='left', menu_list=None, menu_id=None):
                 _class=menu_class,
                 _id=menu_id,
                 li_class='has-dropdown not-click',
-                ul_class='dropdown')
+                ul_class='dropdown',
+                li_active='active')
     return menu
 
 
@@ -516,6 +517,9 @@ def build_row(id, label, control, comment, form,
             control = DIV(CAT(control, comment or ''),
                           _class='%s columns' % fh_control_class)
             comment = ''
+        elif layout == 'placeholder':  # control for placeholder form
+            control['_placeholder'] = label.flatten()
+            label = ''
         else:
             pass
         form_row = DIV(label, control, comment, _id=id, _class='row')
