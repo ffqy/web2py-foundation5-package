@@ -519,7 +519,7 @@ def build_row(id, label, control, comment, form,
             comment = ''
         elif layout == 'placeholder':  # control for placeholder form
             control['_placeholder'] = label.flatten()
-            label = ''
+            label.add_class('show-for-sr')
         else:
             pass
         form_row = DIV(label, control, comment, _id=id, _class='row')
